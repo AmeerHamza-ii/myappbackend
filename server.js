@@ -21,17 +21,13 @@ const acceptQuotationRoutes = require("./routes/radepersonQuotaipn");
 dotenv.config();
 const app = express();
 
-const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "https://my-approved-backed-f3kb.vercel.app",
-  ], // Add allowed origins here
-  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allowed methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
-  credentials: true, // Allow cookies if needed
-};
-
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://myappfrontend-hs1j.vercel.app", // Frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    credentials: true, // If your requests include cookies or credentials
+  })
+);
 
 app.use(express.json());
 
